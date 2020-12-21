@@ -9,7 +9,7 @@ spring:
           lower-case-service-id: true #使用小写service-id
       routes: #配置路由路径
         - id: mall-auth
-          uri: lb://mall-auth
+          uri: lb://mall-auth   #LB，即负载均衡(Load Balance)
           predicates:
             - Path=/mall-auth/**
           filters:
@@ -46,8 +46,8 @@ spring:
   redis:
     database: 0
     port: 6379
-    host: localhost
-    password:
+    host: 114.67.85.120
+    password: 
 secure:
   ignore:
     urls: #配置白名单路径
@@ -81,3 +81,9 @@ management: #开启SpringBoot Admin的监控
   endpoint:
     health:
       show-details: always
+feign:
+  okhttp:
+    enabled: true
+ribbon:
+  ConnectTimeout: 30000 #服务请求连接超时时间（毫秒） 30s
+  ReadTimeout: 3600000 #服务请求处理超时时间（毫秒） 30min

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.ClientdetailsMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.Clientdetails">
+    <id column="appId" jdbcType="VARCHAR" property="appid" />
+    <result column="resourceIds" jdbcType="VARCHAR" property="resourceids" />
+    <result column="appSecret" jdbcType="VARCHAR" property="appsecret" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="grantTypes" jdbcType="VARCHAR" property="granttypes" />
+    <result column="redirectUrl" jdbcType="VARCHAR" property="redirecturl" />
+    <result column="authorities" jdbcType="VARCHAR" property="authorities" />
+    <result column="access_token_validity" jdbcType="INTEGER" property="accessTokenValidity" />
+    <result column="refresh_token_validity" jdbcType="INTEGER" property="refreshTokenValidity" />
+    <result column="additionalInformation" jdbcType="VARCHAR" property="additionalinformation" />
+    <result column="autoApproveScopes" jdbcType="VARCHAR" property="autoapprovescopes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    appId, resourceIds, appSecret, scope, grantTypes, redirectUrl, authorities, access_token_validity, 
+    refresh_token_validity, additionalInformation, autoApproveScopes
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.ClientdetailsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clientdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clientdetails
+    where appId = #{appid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from clientdetails
+    where appId = #{appid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.ClientdetailsExample">
+    delete from clientdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.Clientdetails">
+    insert into clientdetails (appId, resourceIds, appSecret, 
+      scope, grantTypes, redirectUrl, 
+      authorities, access_token_validity, refresh_token_validity, 
+      additionalInformation, autoApproveScopes
+      )
+    values (#{appid,jdbcType=VARCHAR}, #{resourceids,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, 
+      #{scope,jdbcType=VARCHAR}, #{granttypes,jdbcType=VARCHAR}, #{redirecturl,jdbcType=VARCHAR}, 
+      #{authorities,jdbcType=VARCHAR}, #{accessTokenValidity,jdbcType=INTEGER}, #{refreshTokenValidity,jdbcType=INTEGER}, 
+      #{additionalinformation,jdbcType=VARCHAR}, #{autoapprovescopes,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.Clientdetails">
+    insert into clientdetails
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appid != null">
+        appId,
+      </if>
+      <if test="resourceids != null">
+        resourceIds,
+      </if>
+      <if test="appsecret != null">
+        appSecret,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="granttypes != null">
+        grantTypes,
+      </if>
+      <if test="redirecturl != null">
+        redirectUrl,
+      </if>
+      <if test="authorities != null">
+        authorities,
+      </if>
+      <if test="accessTokenValidity != null">
+        access_token_validity,
+      </if>
+      <if test="refreshTokenValidity != null">
+        refresh_token_validity,
+      </if>
+      <if test="additionalinformation != null">
+        additionalInformation,
+      </if>
+      <if test="autoapprovescopes != null">
+        autoApproveScopes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appid != null">
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceids != null">
+        #{resourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null">
+        #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="granttypes != null">
+        #{granttypes,jdbcType=VARCHAR},
+      </if>
+      <if test="redirecturl != null">
+        #{redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="authorities != null">
+        #{authorities,jdbcType=VARCHAR},
+      </if>
+      <if test="accessTokenValidity != null">
+        #{accessTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="refreshTokenValidity != null">
+        #{refreshTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="additionalinformation != null">
+        #{additionalinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="autoapprovescopes != null">
+        #{autoapprovescopes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.ClientdetailsExample" resultType="java.lang.Long">
+    select count(*) from clientdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update clientdetails
+    <set>
+      <if test="record.appid != null">
+        appId = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceids != null">
+        resourceIds = #{record.resourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appsecret != null">
+        appSecret = #{record.appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scope != null">
+        scope = #{record.scope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.granttypes != null">
+        grantTypes = #{record.granttypes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redirecturl != null">
+        redirectUrl = #{record.redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorities != null">
+        authorities = #{record.authorities,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessTokenValidity != null">
+        access_token_validity = #{record.accessTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="record.refreshTokenValidity != null">
+        refresh_token_validity = #{record.refreshTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="record.additionalinformation != null">
+        additionalInformation = #{record.additionalinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoapprovescopes != null">
+        autoApproveScopes = #{record.autoapprovescopes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update clientdetails
+    set appId = #{record.appid,jdbcType=VARCHAR},
+      resourceIds = #{record.resourceids,jdbcType=VARCHAR},
+      appSecret = #{record.appsecret,jdbcType=VARCHAR},
+      scope = #{record.scope,jdbcType=VARCHAR},
+      grantTypes = #{record.granttypes,jdbcType=VARCHAR},
+      redirectUrl = #{record.redirecturl,jdbcType=VARCHAR},
+      authorities = #{record.authorities,jdbcType=VARCHAR},
+      access_token_validity = #{record.accessTokenValidity,jdbcType=INTEGER},
+      refresh_token_validity = #{record.refreshTokenValidity,jdbcType=INTEGER},
+      additionalInformation = #{record.additionalinformation,jdbcType=VARCHAR},
+      autoApproveScopes = #{record.autoapprovescopes,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.Clientdetails">
+    update clientdetails
+    <set>
+      <if test="resourceids != null">
+        resourceIds = #{resourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null">
+        appSecret = #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        scope = #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="granttypes != null">
+        grantTypes = #{granttypes,jdbcType=VARCHAR},
+      </if>
+      <if test="redirecturl != null">
+        redirectUrl = #{redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="authorities != null">
+        authorities = #{authorities,jdbcType=VARCHAR},
+      </if>
+      <if test="accessTokenValidity != null">
+        access_token_validity = #{accessTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="refreshTokenValidity != null">
+        refresh_token_validity = #{refreshTokenValidity,jdbcType=INTEGER},
+      </if>
+      <if test="additionalinformation != null">
+        additionalInformation = #{additionalinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="autoapprovescopes != null">
+        autoApproveScopes = #{autoapprovescopes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where appId = #{appid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.Clientdetails">
+    update clientdetails
+    set resourceIds = #{resourceids,jdbcType=VARCHAR},
+      appSecret = #{appsecret,jdbcType=VARCHAR},
+      scope = #{scope,jdbcType=VARCHAR},
+      grantTypes = #{granttypes,jdbcType=VARCHAR},
+      redirectUrl = #{redirecturl,jdbcType=VARCHAR},
+      authorities = #{authorities,jdbcType=VARCHAR},
+      access_token_validity = #{accessTokenValidity,jdbcType=INTEGER},
+      refresh_token_validity = #{refreshTokenValidity,jdbcType=INTEGER},
+      additionalInformation = #{additionalinformation,jdbcType=VARCHAR},
+      autoApproveScopes = #{autoapprovescopes,jdbcType=VARCHAR}
+    where appId = #{appid,jdbcType=VARCHAR}
+  </update>
+</mapper>

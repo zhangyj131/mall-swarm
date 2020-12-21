@@ -20,7 +20,7 @@ spring:
       port: 27017
       database: mall-port
   redis:
-    host: localhost # Redis服务器地址
+    host:  # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password:  # Redis服务器连接密码（默认为空）
@@ -29,6 +29,7 @@ spring:
     host: localhost
     port: 5672
     virtual-host: /mall
+    #publisher-confirms: true #如果对异步消息需要回调必须设置为true
     username: mall
     password: mall
 mybatis:
@@ -64,5 +65,5 @@ feign:
   okhttp:
     enabled: true
 ribbon:
-  ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
-  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+  ConnectTimeout: 30000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 300000 #服务请求处理超时时间（毫秒）

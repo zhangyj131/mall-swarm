@@ -25,5 +25,7 @@ logging:
   level:
     root: info
     com.macro.mall: debug
+    #org.apache.http: info
+    org.apache.http.impl.conn: info
 logstash:
   host: localhost

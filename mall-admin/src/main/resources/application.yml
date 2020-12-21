@@ -23,8 +23,10 @@ spring:
   rabbitmq: #rabbitmq相关配置
     host: localhost
     port: 5672
-    username: guest
-    password: guest
+    username: mall
+    password: mall
+    #virtual-host: /mall
+    #publisher-confirms: true #如果对异步消息需要回调必须设置为true
   servlet:
     multipart:
       enabled: true #开启文件上传
@@ -68,5 +70,5 @@ feign:
   okhttp:
     enabled: true
 ribbon:
-  ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
-  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+  ConnectTimeout: 30000 #服务请求连接超时时间（毫秒） 30s
+  ReadTimeout: 3600000 #服务请求处理超时时间（毫秒） 30min

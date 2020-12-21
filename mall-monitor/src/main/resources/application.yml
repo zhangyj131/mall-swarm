@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: mall-monitor
   security: # 配置登录用户名和密码
@@ -11,3 +13,7 @@ spring:
         ignored-services: ${spring.application.name}
 server:
   port: 8101
+  
+zyj:
+   zzz:
+      path: 12345
