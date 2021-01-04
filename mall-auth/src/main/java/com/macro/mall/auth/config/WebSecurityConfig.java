@@ -21,10 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
+                .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()//访问@Endpoint注解的类路径都允许
                 .antMatchers("/rsa/publicKey").permitAll()
-                .antMatchers("/v2/api-docs").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/v2/api-docs").permitAll()	//访问/rsa/publicKey和/v2/api-docs允许
+                .anyRequest().authenticated();//访问其他路径都要求进行认证
     }
 
     @Bean

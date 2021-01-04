@@ -6,3 +6,14 @@ spring:
 logging:
   level:
      org.apache.http: error
+     #com.ctrip.framework.apollo: info
+     com.ctrip.framework: info
+     io.netty: info
+     reactor.netty: info
+     com.alibaba.nacos: info
+     io.lettuce: info
+     org.mybatis.spring: info
+     com.macro.mall.dao: debug
+     com.macro.mall.mapper: debug
+     com.macro.mall: debug
+     com.netflix: info

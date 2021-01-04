@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserDetailsService {
         String clientId = request.getParameter("client_id");
         UserDto userDto;
         if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
-            userDto = adminService.loadUserByUsername(username);
+            userDto = adminService.loadUserByUsername(username);//远程调用mall-admin
         }else{
             userDto = memberService.loadUserByUsername(username);
         }

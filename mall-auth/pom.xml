@@ -61,6 +61,10 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
         </dependency>
+        <dependency>
+	        <groupId>com.ctrip.framework.apollo</groupId>
+	        <artifactId>apollo-client</artifactId>
+	    </dependency>
     </dependencies>
 
     <build>

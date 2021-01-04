@@ -5,12 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
+
 /**
  * 应用启动入口
  * Created by macro on 2018/4/26.
  */
 @EnableFeignClients
 @EnableDiscoveryClient
+@EnableApolloConfig
 @SpringBootApplication
 public class MallAdminApplication {
     public static void main(String[] args) {
