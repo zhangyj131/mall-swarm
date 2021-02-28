@@ -31,6 +31,13 @@ import java.util.List;
 @EnableAuthorizationServer
 public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
+	/*
+	 * @AllArgsConstructor说明Oauth2ServerConfig有个全部属性的构造器
+	 * 在spring内，构造器参数是自动注入的
+	 * passwordEncoder、authenticationManager是在WebSecurityConfig创建的bean，根据bean名称注入
+	 * jwtTokenEnhancer是在JwtTokenEnhancer创建的bean，根据bean名称注入
+	 * userDetailsService是没有这个bean名称，但是有类型是UserServiceImpl的bean UserServiceImpl，根据名称查询不到，则根据类型注入
+	 */
     private final PasswordEncoder passwordEncoder;
     private final UserServiceImpl userDetailsService;
     private final AuthenticationManager authenticationManager;
