@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId><!-- 默认使用反应式 不使用servlet -->
         </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>

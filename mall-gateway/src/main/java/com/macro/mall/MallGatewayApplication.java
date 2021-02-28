@@ -12,6 +12,7 @@ import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 public class MallGatewayApplication {
 
     public static void main(String[] args) {
+    	//引入了spring-webflux但是没引入spring-webmvc，因此启动的web类型是REACTIVE
         SpringApplication.run(MallGatewayApplication.class, args);
     }
 
